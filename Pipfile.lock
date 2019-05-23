@@ -38,7 +38,7 @@
                 "sha256:c375e4f95a3a64fccac412e36fb42ba36881e52313ec021ef410b40f67cddca4"
             ],
             "index": "pypi",
-            "version": "==3.8.2"
+            "version": "==3.9.4"
         },
         "psycopg2-binary": {
             "hashes": [
