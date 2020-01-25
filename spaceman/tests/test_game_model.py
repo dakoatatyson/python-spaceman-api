@@ -32,10 +32,15 @@ class GameModelTests( TestCase ):
 
 
     ### guessed_word_state field
-    ### TODO
+    def test_guessed_word_state_same_length_of_word( self ):
+        testword = "apple"
+        game = Game( word=testword )
+        self.assertEquals( len( testword ), len( game.guessed_word_state ) )
 
-
-    
+    def test_geussed_word_state_is_only_empty_strings( self ):
+        testword = "apple"
+        game = Game( word=testword )
+        self.assertEquals( ["", "", "", "", ""], game.guessed_word_state )
 
     ### guessed_word_state field
     def test_guessed_word_state_is_unchanged_if_guess_not_in_word( self ):
