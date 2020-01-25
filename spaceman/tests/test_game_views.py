@@ -67,5 +67,25 @@ class GameApiViewTests( TestCase ):
             mock_get.assert_called_with( pk=25 )
             self.assertEquals( response.status_code, 400 )
 
+    ### GET game instance
+    def test_game_view_responds_with_404_when_game_not_found( self ):
+        with patch.object( Game.objects, 'get' ) as mock_get:
+            mock_get.side_effect = Game.DoesNotExist
+
+            response = game_view( self.mock_get_request, 25 )
+            self.assertEquals( response.status_code, 404 )
+
+    def test_game_view_should_respond_with_game_on_get( self ):
+        with patch.object( Game.objects, 'get' ) as mock_get:
+            mock_get.return_value = self.mock_game
+
+            response = game_view( self.mock_get_request, 25 )
+
+            mock_get.assert_called_with( pk=25 )
+            self.assertEqual( response.status_code, 200 )
+
+            self.expected_game_data["letters_available"] = list( "ABCDEFGHIJKLMNOPQRSTUVWXYZ" )
+            self.assertDictEqual( response.data, self.expected_game_data )
+
 
 
