@@ -5,9 +5,9 @@ name = "pypi"
 
 [packages]
 django = "*"
-djangorestframework = "*"
 "psycopg2-binary" = "*"
 django-cors-headers = "*"
+djangorestframework = "*"
 
 [dev-packages]
 pytest = "*"
