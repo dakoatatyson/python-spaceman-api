@@ -71,7 +71,7 @@ def __pre_init( sender, args, **kwargs ):
     letters_available = kwargs.get('kwargs', {}).get('letters_available')
 
     if word:
-        kwargs['kwargs']['word'] = word
+        kwargs['kwargs']['word'] = word.upper()
 
         if not guessed_word_state:
             kwargs['kwargs']['guessed_word_state'] = [''] * len( word )
